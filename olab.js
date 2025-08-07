@@ -192,6 +192,126 @@ document.querySelectorAll('.btn, .contact-item, .stat-item, .coming-item').forEa
     });
 });
 
+// Matrix Rain Effect for Stats Section
+function initMatrixRain() {
+    const statsSection = document.querySelector('.stats');
+    if (!statsSection) return;
+
+    // Asegurarse de que la sección tenga posición relativa
+    statsSection.style.position = 'relative';
+    statsSection.style.overflow = 'hidden';
+    
+    const chars = '01';
+    const charSize = 14; // Tamaño de fuente en píxeles
+    const columns = Math.floor(window.innerWidth / 20);
+    let drops = [];
+    
+    // Inicializar las gotas
+    for(let i = 0; i < columns; i++) {
+        drops[i] = 1;
+    }
+    
+    function draw() {
+        for(let i = 0; i < drops.length; i++) {
+            // Crear un nuevo carácter aleatoriamente
+            if(Math.random() > 0.975) {
+                const matrixChar = document.createElement('div');
+                matrixChar.textContent = chars[Math.floor(Math.random() * chars.length)];
+                matrixChar.style.position = 'absolute';
+                matrixChar.style.left = i * 20 + 'px';
+                matrixChar.style.top = drops[i] * 20 + 'px';
+                matrixChar.style.color = 'white';
+                matrixChar.style.fontFamily = 'JetBrains Mono, monospace';
+                matrixChar.style.fontSize = charSize + 'px';
+                matrixChar.style.opacity = '0.7';
+                matrixChar.style.pointerEvents = 'none';
+                matrixChar.style.zIndex = '1';
+                matrixChar.style.transition = 'opacity 0.5s';
+                
+                statsSection.appendChild(matrixChar);
+                
+                // Eliminar el carácter después de un tiempo
+                setTimeout(() => {
+                    if(matrixChar.parentNode) {
+                        matrixChar.style.opacity = '0';
+                        setTimeout(() => {
+                            if(matrixChar.parentNode) {
+                                matrixChar.parentNode.removeChild(matrixChar);
+                            }
+                        }, 500);
+                    }
+                }, 2000);
+            }
+            
+            // Reiniciar la gota cuando llega al final
+            if(drops[i] * 20 > statsSection.offsetHeight && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            
+            // Mover la gota hacia abajo
+            drops[i]++;
+        }
+    }
+    
+    // Limpiar caracteres antiguos periódicamente
+    setInterval(() => {
+        const oldChars = statsSection.querySelectorAll('div[style*="position: absolute"]');
+        oldChars.forEach(char => {
+            if (parseInt(char.style.top) > statsSection.offsetHeight + 50) {
+                char.style.opacity = '0';
+                setTimeout(() => {
+                    if (char.parentNode) {
+                        char.parentNode.removeChild(char);
+                    }
+                }, 500);
+            }
+        });
+    }, 5000);
+    
+    // Iniciar la animación
+    let animationInterval = setInterval(draw, 100);
+    
+    // Limpieza cuando la sección ya no es visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                clearInterval(animationInterval);
+                // Limpiar caracteres existentes
+                const chars = statsSection.querySelectorAll('div[style*="position: absolute"]');
+                chars.forEach(char => {
+                    char.style.opacity = '0';
+                    setTimeout(() => {
+                        if (char.parentNode) {
+                            char.parentNode.removeChild(char);
+                        }
+                    }, 500);
+                });
+            } else {
+                animationInterval = setInterval(draw, 100);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    observer.observe(statsSection);
+    
+    // Limpieza al desmontar
+    return () => {
+        clearInterval(animationInterval);
+        observer.disconnect();
+        const chars = statsSection.querySelectorAll('div[style*="position: absolute"]');
+        chars.forEach(char => {
+            if (char.parentNode) {
+                char.parentNode.removeChild(char);
+            }
+        });
+    };
+}
+
+// Initialize matrix rain when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initMatrixRain();
+});
+
 // Add typing effect to manifesto
 function typeWriter(element, text, speed = 50) {
     let i = 0;
