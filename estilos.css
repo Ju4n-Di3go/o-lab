@@ -1590,12 +1590,12 @@ footer {
     }
 
     .terminal-line {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
         margin-bottom: 0.4rem;
     }
 
     .gallery {
-        --s: 37px;
+        --s: 42px;
         margin: 3rem 9.4rem;
     }
 
