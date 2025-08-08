@@ -310,6 +310,57 @@ function initMatrixRain() {
 // Initialize matrix rain when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initMatrixRain();
+    
+    // Initialize Citiverse expandable cards
+    const categories = document.querySelectorAll('.citiverse-category');
+    categories.forEach(category => {
+        const content = category.querySelector('.category-content');
+        const icon = category.querySelector('.toggle-icon');
+        content.style.maxHeight = '0';
+        content.style.overflow = 'hidden';
+        content.style.transition = 'max-height 0.3s ease-out';
+        icon.textContent = '+';
+        
+        // Add click handler to category headers
+        const header = category.querySelector('.category-header');
+        if (header) {
+            header.addEventListener('click', function() {
+                category.classList.toggle('active');
+                
+                // Toggle between + and - icons
+                if (category.classList.contains('active')) {
+                    icon.textContent = '−';
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    icon.textContent = '+';
+                    content.style.maxHeight = '0';
+                }
+            });
+        }
+    });
+    
+    // Open first category by default
+    const firstCategory = document.querySelector('.citiverse-category');
+    if (firstCategory) {
+        firstCategory.classList.add('active');
+        const firstContent = firstCategory.querySelector('.category-content');
+        const firstIcon = firstCategory.querySelector('.toggle-icon');
+        firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+        firstIcon.textContent = '−';
+    }
+    
+    // Handle window resize to adjust content height
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const activeCategory = document.querySelector('.citiverse-category.active');
+            if (activeCategory) {
+                const content = activeCategory.querySelector('.category-content');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }, 250);
+    });
 });
 
 // Add typing effect to manifesto

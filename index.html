@@ -16,7 +16,13 @@
     <header>
         <nav class="container">
             <div class="logo">O/LAB</div>
-            <ul class="nav-links">
+            <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <ul class="nav-links" id="main-navigation" role="menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#labs">How We Work</a></li>
                 <li><a href="#citiverse">Citiverse</a></li>
@@ -48,26 +54,50 @@
             </div>
         </section>
 
+        <style>
+            @media (max-width: 768px) {
+                .about-grid {
+                    grid-template-columns: 1fr !important;
+                }
+                /* Target only the right column in the about section */
+                .about .about-grid .fade-in-right {
+                    margin-top: 1rem !important;
+                    border-left: none !important;
+                    border-top: 2px solid #e8e9eb;
+                    padding-left: 0 !important;
+                    padding-top: 2rem;
+                }
+                /* Ensure the Join the Mission button isn't affected */
+                .hero-buttons .btn-secondary {
+                    margin-left: 0;
+                    padding-left: 1.5rem;
+                }
+            }
+        </style>
         <section id="about" class="about fade-in">
             <div class="container">
-                <div class="about-grid">
+                <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
                     <div class="fade-in-left">
                         <h2 class="section-title">We are your innovation partner.</h2>
                         <div class="manifesto">
-                            We are not an agency.<br>
-                            We are not a dev shop.<br>
-                            We are not driven by short-term wins — <br>
-                            we're driven by what's possible.
+                            We are the tech and talent engine behind the next generation of digital public infrastructure and urban digital transformation.<br>
+                            We are headquartered globally and embedded locally.<br>
+                            We design with empathy, scale intention, and deploy where it matters most.<br><br>
+                            Through our work, we are improving:
                         </div>
                         <ul class="manifesto-points">
-                            <li class="stagger-1">Tailored. Bold. Visionary.</li>
-                            <li class="stagger-2">Powered by international talents, not generic teams.</li>
-                            <li class="stagger-3">Rooted in real execution, not just strategy decks.</li>
+                            <li class="stagger-1">Access to public services.</li>
+                            <li class="stagger-2">Financial tools and inclusion for the unbanked.</li>
+                            <li class="stagger-3">Sustainability and resilience systems.</li>
+                            <li class="stagger-4">Tourism and cultural heritage experiences.</li>
                         </ul>
                     </div>
-                    <div class="fade-in-right">
-                        <p class="section-subtitle">Open Innovation Lab is a next-generation consultancy and venture studio partnering with governments, industry leaders, and visionaries worldwide.</p>
-                        <p>We operate with a pro-collaboration approach, delivering validated solutions in cities with similar socio-economic realities — enabling rapid, context-aware scaling. Fueled by a global network of talent, we turn proven innovation into lasting impact.</p>
+                    <div class="fade-in-right" style="margin-top: 3rem; border-left: 2px solid #e8e9eb; padding-left: 2rem;">
+                        <div style="position: sticky; top: 0rem;">
+                            <h2 class="section-title" style="margin-bottom: 1.5rem;">Our Collaborative Approach</h2>
+                            <p class="section-subtitle">We collaborate with local and national governments, citizens, e-citizens, visitors, and all those who shape cities—because companies, communities, and countries are made of people. And so are we.</p>
+                            <p>We operate with a pro-collaboration approach, delivering validated solutions in cities with similar socio-economic realities — enabling rapid, context-aware scaling. Fueled by a global network of talent, we turn proven innovation into lasting impact.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,22 +152,84 @@
         <section id="citiverse" class="citiverse fade-in">
             <div class="container">
                 <h2 class="section-title">Citiverse</h2>
-                <p class="section-subtitle">Building agile cities with real participation.</p>
+                <p class="section-subtitle">We develop bold, forward-thinking solutions that power the future of smart cities, citiverses, and metacities.</p>
                 
                 <div class="citiverse-grid">
-                    <div class="fade-in-left">
-                        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">We help municipalities implement smart, scalable technology through a bottom-up approach that empowers citizens, aligns public and private stakeholders, and rewards civic action.</p>
-                        <ul class="citiverse-features">
-                            <li class="stagger-1">Token-based ecosystems</li>
-                            <li class="stagger-2">Urban digital twins</li>
-                            <li class="stagger-3">Participatory governance</li>
-                            <li class="stagger-4">Local innovation loops</li>
-                        </ul>
+                    <!-- Left Column -->
+                    <div class="citiverse-column fade-in-left">
+                        <div class="citiverse-intro">
+                            <p>Our modular architecture and digital twin technology support smarter, more inclusive cities—across mobility, culture, and essential public services.</p>
+                        </div>
+
+                        <div class="citiverse-category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <h3>Public Services</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="category-content">
+                                <ul class="citiverse-features">
+                                    <li>Help onboard the unbanked with financial and digital literacy programs</li>
+                                    <li>Enable access to accurate housing, insurance, and healthcare services</li>
+                                    <li>Manage digital identity and ownership securely</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="citiverse-category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <h3>Sustainability & Resilience</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="category-content">
+                                <ul class="citiverse-features">
+                                    <li>Plan smarter cities using digital twin technology for water, energy, and urban systems</li>
+                                    <li>Connect open data with IoT and citizen-sourced insights</li>
+                                    <li>Support climate resilience with interoperable infrastructure</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="citiverse-description fade-in-right">
-                        <h3>This is CivicTech redefined.</h3>
-                        <p>Transparent. Distributed. Human-first.</p>
-                        <p class="citiverse-tagline">Empowering cities through technology that puts citizens at the center of urban development.</p>
+                    
+                    <!-- Right Column -->
+                    <div class="citiverse-column fade-in-right">
+                        <div class="citiverse-category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <h3>Modular Public Infrastructure</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="category-content">
+                                <ul class="citiverse-features">
+                                    <li>Plug-and-play capsule solutions for rapid deployment</li>
+                                    <li>Built for scale, flexibility, and local adaptation</li>
+                                    <li>Full-cycle deployment with on-ground support</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="citiverse-category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <h3>Cultural Heritage & Tourism</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="category-content">
+                                <ul class="citiverse-features">
+                                    <li>Multi-platform distribution of immersive cultural content</li>
+                                    <li>Token-voted content shaped by the local community</li>
+                                    <li>Token-based services that reward civic participation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="citiverse-impact">
+                            <h4>We're shaping systems that are:</h4>
+                            <ul class="citiverse-features compact">
+                                <li>Sustainable and adaptable to changing needs</li>
+                                <li>Scalable across different contexts and geographies</li>
+                                <li>Fueled by local knowledge, but ready for global deployment</li>
+                            </ul>
+                            <p class="citiverse-tagline">We're creating digital infrastructure that helps cities think, act, and evolve—without leaving anyone behind.</p>
+                            <a href="#contact" class="btn btn-primary">Explore Our Solutions</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,11 +242,12 @@
                 
                 <div class="identity-grid">
                     <div class="fade-in-left">
-                        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">We're a different species—urban warriors with innate reflexes for efficiency and effectiveness. We've spent decades in silence, immersed in internal dialogue, solving real-world problems while others chased buzzwords.</p>
+                        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">We're a different species—urban warriors with innate reflexes for efficiency and effectiveness. We build a fleet — united by purpose, not applause.
+                            What Unites Us.</p>
                         <ul class="identity-features">
-                            <li class="stagger-1">Builders, not just talkers</li>
-                            <li class="stagger-2">Driven by impact, not ego</li>
-                            <li class="stagger-3">Focused on sustainable solutions</li>
+                            <li class="stagger-1">Resilience over ego</li>
+                            <li class="stagger-2">Systems thinking over buzzwords</li>
+                            <li class="stagger-3">Collaboration over competition</li>
                         </ul>
                     </div>
                     <div class="identity-description fade-in-right">
@@ -316,11 +409,11 @@
                 <div class="contact-grid">
                     <div class="contact-item stagger-1">
                         <h3>General Inquiries</h3>
-                        <p>mk@adamuscapital.eu</p>
+                        <p> info@openinnovationlab.org</p>
                     </div>
                     <div class="contact-item stagger-2">
                         <h3>Partnership</h3>
-                        <p>mk@adamuscapital.eu</p>
+                        <p>join@openinnovationlab.org</p>
                     </div>
                     <div class="contact-item stagger-3">
                         <h3>Delaware HQ</h3>
@@ -329,7 +422,7 @@
                 </div>
 
                 <div style="margin-top: 3rem; text-align: center;">
-                    <a href="mailto:mk@adamuscapital.eu" class="btn btn-primary" style="color: rgb(238, 238, 238); border-color: white;" >Start a Mission</a>
+                    <a href="mailto:join@openinnovationlab.org" class="btn btn-primary" style="color: rgb(238, 238, 238); border-color: white;" >Start a Mission</a>
                 </div>
             </div>
         </section>
@@ -348,7 +441,6 @@
     </footer>
  
     <script src="olab.js"></script>
-   
+    <script src="menu.js"></script>
 </body>
 </html>
-                
