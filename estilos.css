@@ -1852,7 +1852,7 @@ footer {
     }
 
     .section-title {
-        font-size: clamp(3.3rem, 2.8vw, 2rem);
+        font-size: clamp(2.3rem, 2.8vw, 2rem);
     }
 
     .section-title1 {
