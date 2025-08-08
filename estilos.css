@@ -1595,8 +1595,12 @@ footer {
     }
 
     .gallery {
-        --s: 42px;
-        margin: 3rem 9.4rem;
+        --s: 42px;  /* Tamaño base */
+        margin: 3rem auto;  /* Centrado horizontal con margen vertical */
+        position: relative;
+        width: var(--s);  /* Asegura que el ancho sea igual al tamaño del botón */
+        left: 5%;
+        transform: translateX(-50%)!important;  /* Centrado preciso */
     }
 
     .stat-item {
