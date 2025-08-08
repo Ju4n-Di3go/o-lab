@@ -333,6 +333,27 @@ function typeWriter(element, text, speed = 50) {
     type();
 }
 
+// Terminal lines scroll animation
+const terminalObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const lines = entry.target.querySelectorAll('.terminal-line');
+            lines.forEach(line => {
+                line.classList.add('visible');
+            });
+            // Stop observing after animation
+            terminalObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+// Observe terminal section
+document.querySelectorAll('.terminal').forEach(terminal => {
+    terminalObserver.observe(terminal);
+});
+
 // Initialize typing effect when manifesto comes into view
 const manifestoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

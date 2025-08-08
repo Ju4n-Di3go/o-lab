@@ -956,11 +956,28 @@ section {
     animation: typewriter 0.5s ease forwards;
 }
 
-.terminal-line:nth-child(1) { animation-delay: 0.2s; }
-.terminal-line:nth-child(2) { animation-delay: 0.6s; }
-.terminal-line:nth-child(3) { animation-delay: 1.0s; }
-.terminal-line:nth-child(4) { animation-delay: 1.4s; }
-.terminal-line:nth-child(5) { animation-delay: 1.8s; }
+/* Terminal lines animation */
+.terminal-line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', monospace;
+    color: var(--gray-300);
+    text-shadow: 0 0 5px rgba(68, 68, 68, 0.932);
+}
+
+.terminal-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.terminal-line:nth-child(1) { transition-delay: 0.1s; }
+.terminal-line:nth-child(2) { transition-delay: 0.3s; }
+.terminal-line:nth-child(3) { transition-delay: 0.5s; }
+.terminal-line:nth-child(4) { transition-delay: 0.7s; }
+.terminal-line:nth-child(5) { transition-delay: 0.9s; }
 
 @keyframes typewriter {
     to {
