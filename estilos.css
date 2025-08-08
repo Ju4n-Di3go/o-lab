@@ -21,11 +21,18 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: var(--white);
     color: var(--black);
     line-height: 1.6;
+    position: relative;
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -63,7 +70,9 @@ body {
 header {
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
+    width: 100vw;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -1521,8 +1530,29 @@ footer {
 
 /* Very small devices (max-width: 480px) */
 @media (max-width: 480px) {
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
     body {
         font-size: 0.9rem;
+        width: 100%;
+        position: relative;
+    }
+    
+    /* Ensure all sections don't cause horizontal scroll */
+    .container {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+    }
+    
+    .hero, section, footer {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
     }
 
     .hero {
@@ -1645,8 +1675,6 @@ footer {
         transform: rotate(315deg) translate(60px) rotate(-315deg) scale(1);
         transition-delay: 0.7s;
     }
-
-
 }
 
 /* Large screens (min-width: 1440px) */
