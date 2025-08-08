@@ -456,7 +456,7 @@ nav {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--accent);
+    background: var(--gray-700);
     color: white;
     border-radius: 50%;
     font-weight: bold;
@@ -1249,12 +1249,13 @@ footer {
 
 /* Gallery styles */
 .gallery {
-    --s: 100px;
+    --s: 80px;
     width: var(--s);
     height: var(--s);
     position: relative;
-    margin: 54px;
+    margin: 39px;
     margin-left: 2rem; /* Space between terminal lines and gallery */
+    margin-top: 62px;
 }
 
 .gallery input {
@@ -1324,33 +1325,33 @@ footer {
 }
 
 .gallery input:checked ~ img:nth-child(3) { 
-    transform: rotate(0deg) translate(150px) rotate(0deg) scale(1); 
+    transform: rotate(0deg) translate(120px) rotate(0deg) scale(1); 
 }
 .gallery input:checked ~ img:nth-child(4) { 
-    transform: rotate(45deg) translate(150px) rotate(-45deg) scale(1); 
+    transform: rotate(45deg) translate(120px) rotate(-45deg) scale(1); 
     transition-delay: 0.1s;
 }
 .gallery input:checked ~ img:nth-child(5) { 
-    transform: rotate(90deg) translate(150px) rotate(-90deg) scale(1);
+    transform: rotate(90deg) translate(120px) rotate(-90deg) scale(1);
     transition-delay: 0.2s;
 }
 .gallery input:checked ~ img:nth-child(6) { 
-    transform: rotate(135deg) translate(150px) rotate(-135deg) scale(1);
+    transform: rotate(135deg) translate(120px) rotate(-135deg) scale(1);
     transition-delay: 0.3s;
 }
 .gallery input:checked ~ img:nth-child(7) { 
-    transform: rotate(180deg) translate(150px) rotate(-180deg) scale(1);
+    transform: rotate(180deg) translate(120px) rotate(-180deg) scale(1);
     transition-delay: 0.4s;
 }
 .gallery input:checked ~ img:nth-child(8) { 
-    transform: rotate(225deg) translate(150px) rotate(-225deg) scale(1);
+    transform: rotate(225deg) translate(120px) rotate(-225deg) scale(1);
     transition-delay: 0.5s;
 }
 .gallery input:checked ~ img:nth-child(9) { 
-    transform: rotate(270deg) translate(150px) rotate(-270deg) scale(1);
+    transform: rotate(270deg) translate(120px) rotate(-270deg) scale(1);
     transition-delay: 0.6s;
 }
 .gallery input:checked ~ img:nth-child(10) { 
-    transform: rotate(315deg) translate(150px) rotate(-315deg) scale(1);
+    transform: rotate(315deg) translate(120px) rotate(-315deg) scale(1);
     transition-delay: 0.7s;
 }
