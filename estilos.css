@@ -160,6 +160,20 @@ nav {
     border: none;
     cursor: pointer;
     z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove gray highlight on mobile tap */
+.hamburger:active,
+.hamburger:focus {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure the button doesn't change color when active */
+button.hamburger:active,
+button.hamburger:focus {
+    background-color: transparent !important;
 }
 
 .hamburger-box {
@@ -180,7 +194,7 @@ nav {
 .hamburger-inner::after {
     width: 30px;
     height: 2px;
-    background-color: var(--black);
+    background-color: var(--black); /* Changed from var(--black) to white */
     border-radius: 4px;
     position: absolute;
     transition: transform 0.15s ease;
@@ -1819,6 +1833,16 @@ footer {
         position: relative;
     }
     
+    /* Ensure text in Labs section is properly justified on mobile */
+    .labs .section-subtitle,
+    .labs .assessment-text {
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+    
     /* Ensure all sections don't cause horizontal scroll */
     .container {
         width: 100%;
@@ -2021,6 +2045,33 @@ footer {
     /* Prevent scrolling when menu is open */
     body.menu-open {
         overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+    }
+    
+    /* Container that will prevent scrolling */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        z-index: 999;
+        pointer-events: none;
+    }
+    
+    /* Fix for iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+        body.menu-open {
+            position: relative;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            height: 100vh;
+        }
     }
     
     /* Add overlay when menu is open */

@@ -3,11 +3,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links li');
 
+    // Store scroll position
+    let scrollPosition = 0;
+    
     // Toggle mobile menu
     hamburger.addEventListener('click', function() {
+        const isOpening = !this.classList.contains('active');
+        
+        if (isOpening) {
+            // Store current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
+            // Restore scroll position after menu closes
+            requestAnimationFrame(() => {
+                window.scrollTo(0, scrollPosition);
+            });
+        }
+        
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
 
         // Toggle aria-expanded for accessibility
         const expanded = this.getAttribute('aria-expanded') === 'true' || false;
