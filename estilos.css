@@ -2184,6 +2184,26 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr !important;
+    }
+    /* Target only the right column in the about section */
+    .about .about-grid .fade-in-right {
+        margin-top: 1rem !important;
+        border-left: none !important;
+        border-top: 2px solid #e8e9eb;
+        padding-left: 0 !important;
+        padding-top: 2rem;
+    }
+    /* Ensure the Join the Mission button isn't affected */
+    .hero-buttons .btn-secondary {
+        margin-left: 0;
+        padding-left: 1.5rem;
+    }
+}
+
+
 
 /* Scroll reveal stagger */
 .stagger-1 { transition-delay: 0.1s; }
