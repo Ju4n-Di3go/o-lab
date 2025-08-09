@@ -1840,6 +1840,7 @@ footer {
 
     .hero-title {
         font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        margin-top: 64px;
     }
 
     .hero-subtitle {
