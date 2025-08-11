@@ -104,7 +104,7 @@ nav {
 .logo {
     font-weight: 400;
     font-size: 1.5rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0rem;
     color: var(--black);
     font-family: 'JetBrains Mono', monospace;
     transition: transform 0.3s ease;
